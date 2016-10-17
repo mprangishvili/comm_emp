@@ -1,0 +1,20 @@
+.login_btn:hover{
+	-fx-background-color: '#fac200' !important;
+	-fx-text-fill: '#213f68' !important;
+}
+#regBack:hover{
+	-fx-background-color: '#d61110' !important;
+}
+
+#authorised_pane{
+	-fx-background-color: '#e2e1e8' !important;
+		
+}
+
+#exitButton:hover{
+	-fx-background-color: 'fac200' !important;
+	-fx-text-fill:  black !important;
+	
+	
+}
+
