@@ -1,14 +1,14 @@
 package application;
 
-import java.awt.List;
+//import java.awt.List;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Arrays;
+//import java.sql.SQLException;
+//import java.util.Arrays;
 import java.util.HashMap;
-import javafx.scene.input.KeyEvent;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,9 +20,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.SingleSelectionModel;
+//import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+//import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class RegistrationController {
@@ -31,6 +32,7 @@ public class RegistrationController {
 	// ObservableList<ObservableList> cityList=
 	// FXCollections.observableArrayList();
 	// HashMap<Integer, String> tempCityList = new HashMap<Integer, String>();
+	@SuppressWarnings("rawtypes")
 	HashMap<String, ObservableList> cityList = new HashMap<String, ObservableList>();
 
 	// ObservableList<String> cityListGeorgia =
