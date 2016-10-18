@@ -23,7 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-//import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class RegistrationController {
