@@ -25,7 +25,7 @@ public class LoginController {
 	private Pane loginPane;
 
 	public void registration(ActionEvent event) throws IOException, InterruptedException {
-		Parent registration_page_parent = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+		Parent registration_page_parent = FXMLLoader.load(getClass().getResource("/view/Registration.fxml"));
 		Scene registration_page_scene = new Scene(registration_page_parent);
 		registration_page_scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

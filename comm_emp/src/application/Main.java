@@ -17,7 +17,7 @@ public class Main extends Application {
 			double width = screenSize.getWidth();
 			double height = screenSize.getHeight();
 			
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Login.fxml"));
+			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			Scene scene = new Scene(root, width, height);
 //			getContentPane().setBackground(Color.black);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

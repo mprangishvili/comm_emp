@@ -39,7 +39,7 @@ public class RegistrationController {
 	// FXCollections.observableArrayList("Tbilisi", "Zugdidi");
 
 	public void back(ActionEvent event) throws IOException {
-		Parent login_page_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Parent login_page_parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene login_page_scene = new Scene(login_page_parent);
 		Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		primaryStage.setScene(login_page_scene);
