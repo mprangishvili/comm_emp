@@ -6,10 +6,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -19,292 +23,318 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrationController">
-   <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="900.0" BorderPane.alignment="CENTER">
-         <children>
-            <Pane layoutX="100.0" layoutY="34.0" prefHeight="620.0" prefWidth="700.0">
-               <children>
-                  <ImageView fitHeight="157.0" fitWidth="450.0" layoutX="125.0">
-                     <image>
-                        <Image url="@../image/c4y_logo.png" />
-                     </image>
-                  </ImageView>
-                  <Polygon layoutX="649.0" layoutY="574.0" stroke="TRANSPARENT" strokeType="INSIDE">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Polygon layoutX="51.0" layoutY="575.0" stroke="TRANSPARENT" strokeType="INSIDE">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="-60.0" />
-                     </points>
-                  </Polygon>
-                  <Button fx:id="exitButtonreg" contentDisplay="TOP" layoutX="674.0" mnemonicParsing="false" onAction="#closeButtonAction" style="-fx-background-color: red;" text="X" />
-               </children>
-            </Pane>
-            <Pane layoutX="150.0" layoutY="280.0" prefHeight="370.0" prefWidth="600.0" style="-fx-background-color: fbfbfb;">
-               <children>
-                  <TextField id="regREMail" fx:id="repemail" layoutX="325.0" layoutY="83.0" prefHeight="33.0" prefWidth="225.0" promptText="Repeat Email" style="-fx-padding: 10 30;" styleClass="userfield">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </TextField>
-                  <PasswordField id="regCPass" fx:id="reppass" layoutX="325.0" layoutY="141.0" prefHeight="36.0" prefWidth="225.0" promptText="Confirm Password" style="-fx-padding: 10 30;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </PasswordField>
-                  <PasswordField id="regPass" fx:id="pass" layoutX="50.0" layoutY="141.0" prefHeight="36.0" prefWidth="225.0" promptText="Password" style="-fx-padding: 10 30;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </PasswordField>
-                  <TextField id="regEMail" fx:id="email" layoutX="50.0" layoutY="83.0" prefHeight="33.0" prefWidth="225.0" promptText="Email" style="-fx-padding: 10 30;" styleClass="userfield">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </TextField>
-                  <TextField id="regFName" fx:id="name" layoutX="50.0" layoutY="25.0" prefHeight="33.0" prefWidth="225.0" promptText="First Name" style="-fx-padding: 10 30;" styleClass="userfield">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </TextField>
-                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="55.0" layoutY="92.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/user.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="52.0" layoutY="148.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/lock.png" />
-                     </image>
-                  </ImageView>
-                  <TextField id="regLName" fx:id="lastname" layoutX="325.0" layoutY="25.0" prefHeight="33.0" prefWidth="225.0" promptText="Last Name" style="-fx-padding: 10 30;" styleClass="userfield">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#00000065" />
-                     </effect>
-                  </TextField>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="328.0" layoutY="148.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/lock.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="331.0" layoutY="93.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/user.png" />
-                     </image>
-                  </ImageView>
-                  <ComboBox id="regCountry" fx:id="regCountry" layoutX="50.0" layoutY="199.0" prefHeight="33.0" prefWidth="225.0" promptText="Choose country">
-                     <effect>
-                        <DropShadow color="#00000067" />
-                     </effect>
-                  </ComboBox>
-                  <Pane layoutX="50.0" layoutY="240.0" prefHeight="120.0" prefWidth="500.0">
-                     <children>
-                        <ImageView fitHeight="33.0" fitWidth="100.0">
-                           <image>
-                              <Image url="@../image/comm_fleet.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="109.0" layoutX="120.0">
-                           <image>
-                              <Image url="@../image/comm_lease.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="126.0" layoutX="249.0">
-                           <image>
-                              <Image url="@../image/comm_mobile.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="107.0" layoutY="60.0">
-                           <image>
-                              <Image url="@../image/comm_object.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="107.0" layoutX="390.0">
-                           <image>
-                              <Image url="@../image/comm_cars.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="86.0" layoutX="125.0" layoutY="60.0">
-                           <image>
-                              <Image url="@../image/comm_gps.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="88.0" layoutX="252.0" layoutY="60.0">
-                           <image>
-                              <Image url="@../image/comm_fair.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="108.0" layoutX="391.0" layoutY="60.0">
-                           <image>
-                              <Image url="@../image/comm_ticket.png" />
-                           </image>
-                        </ImageView>
-                        <CheckBox id="regFleet" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="3.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regLease" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regCars" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regGps" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="126.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regObject" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="3.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regTicket" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="396.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regMobile" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="260.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                        <CheckBox id="regFair" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="260.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets bottom="40.0" left="40.0" right="40.0" />
-                           </padding></CheckBox>
-                     </children>
-                  </Pane>
-                  <ComboBox id="regCity" fx:id="regCity" layoutX="325.0" layoutY="199.0" onMouseClicked="#chooseCity" prefHeight="33.0" prefWidth="225.0" promptText="Choose city">
-                     <effect>
-                        <DropShadow color="#00000067" />
-                     </effect>
-                  </ComboBox>
-               </children>
-            </Pane>
-            <Pane layoutX="100.0" layoutY="647.0" prefHeight="54.0" prefWidth="700.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
-               <effect>
-                  <DropShadow color="#00000067" />
-               </effect>
-               <children>
-                  <Button id="regBack" layoutX="100.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #b31b1a;" styleClass="regBack" text="Back" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <DropShadow color="#0000007e" />
-                     </effect>
-                  </Button>
-                  <Button id="regReg" fx:id="register" layoutX="375.0" layoutY="8.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #213f68;" styleClass="login_btn" text="Register" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <DropShadow color="#0000007e" />
-                     </effect>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="100.0" layoutY="216.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #213f68; -fx-background-radius: 5;">
-               <children>
-                  <Label layoutX="254.0" layoutY="10.0" prefHeight="50.0" prefWidth="192.0" style="-fx-text-fill: white;" text="SIGN UP" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="41.0" />
-                     </font>
-                  </Label>
-               </children>
-               <effect>
-                  <DropShadow color="#00000081" />
-               </effect>
-            </Pane>
-         </children>
-      </Pane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrationController">
+	<center>
+		<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+			<children>
+				<Pane layoutX="100.0" layoutY="34.0" prefHeight="698.0" prefWidth="700.0">
+					<children>
+						<ImageView fitHeight="157.0" fitWidth="450.0" layoutX="125.0">
+							<image>
+								<Image url="@../image/c4y_logo.png" />
+							</image>
+						</ImageView>
+						<Polygon layoutX="649.0" layoutY="660.0" stroke="TRANSPARENT" strokeType="INSIDE">
+							<fill>
+								<LinearGradient endX="1.0" endY="1.0">
+									<stops>
+										<Stop color="BLACK" />
+										<Stop color="WHITE" offset="1.0" />
+									</stops>
+								</LinearGradient>
+							</fill>
+							<points>
+								<Double fx:value="-50.0" />
+								<Double fx:value="40.0" />
+								<Double fx:value="50.0" />
+								<Double fx:value="40.0" />
+								<Double fx:value="0.0" />
+								<Double fx:value="-60.0" />
+							</points>
+						</Polygon>
+						<Polygon layoutX="51.0" layoutY="661.0" stroke="TRANSPARENT" strokeType="INSIDE">
+							<fill>
+								<LinearGradient endX="1.0" endY="1.0">
+									<stops>
+										<Stop color="BLACK" />
+										<Stop color="WHITE" offset="1.0" />
+									</stops>
+								</LinearGradient>
+							</fill>
+							<points>
+								<Double fx:value="-50.0" />
+								<Double fx:value="40.0" />
+								<Double fx:value="50.0" />
+								<Double fx:value="40.0" />
+								<Double fx:value="0.0" />
+								<Double fx:value="-60.0" />
+							</points>
+						</Polygon>
+					</children>
+				</Pane>
+				<Pane layoutX="150.0" layoutY="280.0" prefHeight="452.0" prefWidth="600.0" style="-fx-background-color: fbfbfb;">
+					<children>
+						<TextField id="regFName" fx:id="regFName" layoutX="50.0" layoutY="25.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="First Name*" style="-fx-padding: 10 30;" styleClass="userfield">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</TextField>
+						<TextField id="regLName" fx:id="regLName" layoutX="325.0" layoutY="25.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Last Name*" style="-fx-padding: 10 30;" styleClass="userfield">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</TextField>
+						<TextField id="regEMail" fx:id="regEMail" layoutX="50.0" layoutY="83.0" onAction="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Email*" style="-fx-padding: 10 30;" styleClass="userfield">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</TextField>
+						<TextField id="regREMail" fx:id="regREMail" layoutX="325.0" layoutY="83.0" onAction="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Repeat Email*" style="-fx-padding: 10 30;" styleClass="userfield">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</TextField>
+						<PasswordField id="regPass" fx:id="regPass" layoutX="50.0" layoutY="141.0" onAction="#fieldChecker" prefHeight="36.0" prefWidth="225.0" promptText="Password*" style="-fx-padding: 10 30;">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</PasswordField>
+						<PasswordField id="regCPass" fx:id="regCPass" layoutX="325.0" layoutY="141.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="36.0" prefWidth="225.0" promptText="Confirm Password*" style="-fx-padding: 10 30;">
+							<font>
+								<Font size="18.0" />
+							</font>
+							<effect>
+								<DropShadow color="#00000065" />
+							</effect>
+						</PasswordField>
+						<ComboBox id="regCountry" fx:id="regCountry" layoutX="50.0" layoutY="199.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Choose country*">
+							<effect>
+								<DropShadow color="#00000067" />
+							</effect>
+						</ComboBox>
+						<ComboBox id="regCity" fx:id="regCity" layoutX="325.0" layoutY="199.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Choose city*">
+							<effect>
+								<DropShadow color="#00000067" />
+							</effect>
+						</ComboBox>
+						<TextField id="regAddress" fx:id="regAddress" layoutX="50.0" layoutY="257.0" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="225.0" promptText="Address, Zip code*">
+							<effect>
+								<DropShadow color="#00000067" />
+							</effect>
+						</TextField>
+						<DatePicker id="redDate" fx:id="regDate" layoutX="325.0" layoutY="257.0" onAction="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="33.0" prefWidth="130.0" promptText="dd/mm/yy*">
+							<effect>
+								<DropShadow color="#00000067" />
+							</effect>
+						</DatePicker>
+						<RadioButton id="regMr" fx:id="regRBtnMr" layoutX="460.0" layoutY="265.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" text="Mr.">
+							<toggleGroup>
+								<ToggleGroup fx:id="regTitleGroup" />
+							</toggleGroup>
+						</RadioButton>
+						<RadioButton id="regMs" fx:id="regRBtnMrs" layoutX="508.0" layoutY="265.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" text="Mrs." toggleGroup="$regTitleGroup" />
+						<Pane fx:id="regOrgPane" layoutX="50.0" layoutY="307.0" prefHeight="128.0" prefWidth="500.0" style="-fx-background-color: white;">
+							<children>
+								<ImageView fitHeight="33.0" fitWidth="100.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_fleet.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="109.0" layoutX="120.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_lease.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="126.0" layoutX="249.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_mobile.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="107.0" layoutY="60.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_object.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="107.0" layoutX="390.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_cars.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="86.0" layoutX="125.0" layoutY="60.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_gps.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="88.0" layoutX="252.0" layoutY="60.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_fair.png" />
+									</image>
+								</ImageView>
+								<ImageView fitHeight="33.0" fitWidth="108.0" layoutX="391.0" layoutY="60.0" translateY="5.0">
+									<image>
+										<Image url="@../image/comm_ticket.png" />
+									</image>
+								</ImageView>
+								<CheckBox id="regCars" fx:id="regCars" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="395.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regMobile" fx:id="regMobile" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="260.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regTicket" fx:id="regTicket" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="396.0" layoutY="60.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regFair" fx:id="regFair" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="260.0" layoutY="60.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regGps" fx:id="regGps" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="126.0" layoutY="60.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regLease" fx:id="regLease" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="125.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regFleet" fx:id="regFleet" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="3.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+								<CheckBox id="regObject" fx:id="regObject" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="3.0" layoutY="60.0" mnemonicParsing="false" onAction="#fieldChecker" onKeyReleased="#fieldChecker" onMouseClicked="#fieldChecker" prefHeight="25.0" prefWidth="83.0" translateY="5.0">
+									<cursor>
+										<Cursor fx:constant="HAND" />
+									</cursor>
+									<padding>
+										<Insets bottom="40.0" left="40.0" right="40.0" />
+									</padding>
+								</CheckBox>
+							</children>
+							<effect>
+								<InnerShadow color="#00000099" />
+							</effect>
+						</Pane>
+						<ImageView fitHeight="21.0" fitWidth="21.0" layoutX="55.0" layoutY="92.0">
+							<cursor>
+								<Cursor fx:constant="TEXT" />
+							</cursor>
+							<image>
+								<Image url="@../image/user.png" />
+							</image>
+						</ImageView>
+						<ImageView fitHeight="28.0" fitWidth="28.0" layoutX="52.0" layoutY="148.0">
+							<cursor>
+								<Cursor fx:constant="TEXT" />
+							</cursor>
+							<image>
+								<Image url="@../image/lock.png" />
+							</image>
+						</ImageView>
+						<ImageView fitHeight="28.0" fitWidth="28.0" layoutX="328.0" layoutY="148.0">
+							<cursor>
+								<Cursor fx:constant="TEXT" />
+							</cursor>
+							<image>
+								<Image url="@../image/lock.png" />
+							</image>
+						</ImageView>
+						<ImageView fitHeight="21.0" fitWidth="21.0" layoutX="331.0" layoutY="93.0">
+							<cursor>
+								<Cursor fx:constant="TEXT" />
+							</cursor>
+							<image>
+								<Image url="@../image/user.png" />
+							</image>
+						</ImageView>
+					</children>
+				</Pane>
+				<Pane layoutX="100.0" layoutY="731.0" prefHeight="54.0" prefWidth="700.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
+					<effect>
+						<DropShadow color="#00000067" />
+					</effect>
+					<children>
+						<Button id="regBack" layoutX="100.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #b31b1a;" styleClass="regBack" text="Back" textFill="WHITE">
+							<font>
+								<Font size="20.0" />
+							</font>
+							<cursor>
+								<Cursor fx:constant="HAND" />
+							</cursor>
+							<effect>
+								<DropShadow color="#0000007e" />
+							</effect>
+						</Button>
+						<Button id="regReg" fx:id="regReg" disable="true" layoutX="375.0" layoutY="8.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #213f68;" styleClass="login_btn" text="Register" textFill="WHITE">
+							<font>
+								<Font size="20.0" />
+							</font>
+							<cursor>
+								<Cursor fx:constant="HAND" />
+							</cursor>
+							<effect>
+								<DropShadow color="#0000007e" />
+							</effect>
+						</Button>
+					</children>
+				</Pane>
+				<Pane layoutX="100.0" layoutY="216.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #213f68; -fx-background-radius: 5;">
+					<children>
+						<Label layoutX="254.0" layoutY="10.0" prefHeight="50.0" prefWidth="192.0" style="-fx-text-fill: white;" text="SIGN UP" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="41.0" />
+							</font>
+						</Label>
+					</children>
+					<effect>
+						<DropShadow color="#00000081" />
+					</effect>
+				</Pane>
+			</children>
+		</Pane>
+	</center>
 </BorderPane>
