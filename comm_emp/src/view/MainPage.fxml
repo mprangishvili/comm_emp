@@ -29,6 +29,15 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <center>
-      <Pane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER" />
+      <Pane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="record-sales" layoutX="277.0" layoutY="250.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="245.0" text="Online Chat" textFill="WHITE">
+               <font>
+                  <Font size="29.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></Pane>
    </center>
 </BorderPane>
