@@ -127,7 +127,7 @@ public class RegistrationController {
 		boolean k;
 		k=isValidEmailAddress(regEMail.getText().toString());
 		System.out.println(k);
-
+//
 
 //
 		if(!k){
