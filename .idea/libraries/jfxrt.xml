@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jfxrt">
-    <CLASSES>
-      <root url="jar:///opt/JavaFXSceneBuilder2.0/runtime/jre/lib/ext/jfxrt.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
