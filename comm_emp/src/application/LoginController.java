@@ -69,7 +69,7 @@ public class LoginController {
             java.sql.Statement stmt = null;
             ResultSet rs = null;
 
-            connection = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
+            connection = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgresr", "postgres", "18052010M+m");
 
             stmt = connection.createStatement();
 
