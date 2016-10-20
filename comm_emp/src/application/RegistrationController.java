@@ -135,7 +135,7 @@ public class RegistrationController {
 
 			mistake.setGraphic(new ImageView(image));
 			regReg.setDisable(true);
-
+//
 		}
 
 		else {
