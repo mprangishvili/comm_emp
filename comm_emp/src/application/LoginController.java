@@ -68,16 +68,16 @@ public class LoginController {
 		try {	
 			java.sql.Statement stmt = null;
 			ResultSet rs = null;
-			connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "18052010M+m");
+			connection = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
 			stmt = connection.createStatement();
 
-			String query = "select password from test where name=" + "'" + user + "'";
+			String query = "select pass_phrase from users where first_name=" + "'" + user + "'";
 
 			rs = stmt.executeQuery(query);
 //			Alert alert = new Alert(AlertType.ERROR);
 			if (rs.next()) {
 				System.out.println("database returns a value! ! ! ");
-				String passcheck = rs.getString("password");
+				String passcheck = rs.getString("pass_phrase");
 
 				if (passcheck.equals(pass)) {
 					System.out.println("equals");
