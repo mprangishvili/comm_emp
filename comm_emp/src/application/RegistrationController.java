@@ -119,9 +119,6 @@ public class RegistrationController {
  }
 	
 	
-	
-	
-	
 	@FXML
 	private void fieldChecker() {
 		
@@ -149,16 +146,6 @@ public class RegistrationController {
 		
 		
 	}
-		
-//		if (eventType.equals("ComboBox")) {
-//			if (regCountry.getValue() == "Germany") {
-//				regCity.setItems(cityListGermany);
-//			} else if (regCountry.getValue() == "Georgia") {
-//				regCity.setItems(cityListGeorgia);
-//			} else {
-//			}
-//		}
-//		
 		
 		if (!regFName.getText().isEmpty() && !regLName.getText().isEmpty() && !regEMail.getText().isEmpty()
 				&& (!regREMail.getText().isEmpty() && !regPass.getText().isEmpty()) && !regCPass.getText().isEmpty()
