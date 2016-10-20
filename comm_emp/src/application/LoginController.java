@@ -74,7 +74,6 @@ public class LoginController {
 			String query = "select pass_phrase from users where first_name=" + "'" + user + "'";
 
 			rs = stmt.executeQuery(query);
-//			Alert alert = new Alert(AlertType.ERROR);
 			if (rs.next()) {
 				System.out.println("database returns a value! ! ! ");
 				String passcheck = rs.getString("pass_phrase");
