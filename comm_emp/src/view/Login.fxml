@@ -165,7 +165,7 @@
                </image>
             </ImageView>
             <Label fx:id="warning" layoutX="227.0" layoutY="538.0" prefHeight="19.0" prefWidth="344.0" style="-fx-text-fill: #db1111; -fx-font-weight: bold; -fx-font-size: 15;" textAlignment="CENTER" />
-            <Button fx:id="exitB" layoutX="780.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="13.0" prefWidth="20.0" style="-fx-background-color: #213f68; -fx-border-radius: 5; -fx-font-weight: bold; -fx-text-fill: white;" styleClass="exitButton" text="X" />
+            <Button fx:id="exitB" layoutX="773.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="13.0" prefWidth="20.0" style="-fx-background-color: #213f68; -fx-border-radius: 5; -fx-font-weight: bold; -fx-text-fill: white;" styleClass="exitButton" text="X" />
          </children></Pane>
    </center>
 </BorderPane>
