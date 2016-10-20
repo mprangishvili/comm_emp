@@ -1,12 +1,9 @@
 package application;
-
 import java.io.IOException;
 //import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javax.swing.JOptionPane;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,24 +13,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 //import javafx.scene.control.ComboBoxBase;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 public class RegistrationController {
-
 	ObservableList<String> countryList = FXCollections.observableArrayList("Germany", "Georgia");
 	ObservableList<String> cityListGermany = FXCollections.observableArrayList("Chemnitz", "Berlin");
 	ObservableList<String> cityListGeorgia = FXCollections.observableArrayList("Tbilisi", "Zugdidi");
-
 	public void back(ActionEvent event) throws IOException {
 		Parent login_page_parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene login_page_scene = new Scene(login_page_parent);
@@ -41,19 +30,16 @@ public class RegistrationController {
 		primaryStage.setScene(login_page_scene);
 		primaryStage.setFullScreen(true);
 		primaryStage.show();
-
 	}
-
-//	private boolean _textField = false;
-//	private boolean _comboBox = false;
-//	private boolean _date = false;
-//	private boolean _radioButton = false;
-//	private boolean _checkBox = false;
+	// private boolean _textField = false;
+// private boolean _comboBox = false;
+// private boolean _date = false;
+// private boolean _radioButton = false;
+// private boolean _checkBox = false;
 	@FXML
 	private ComboBox<String> regCountry;
 	@FXML
 	private ComboBox<String> regCity;
-
 	@FXML
 	private TextField regFName;
 	@FXML
@@ -94,10 +80,11 @@ public class RegistrationController {
 	private CheckBox regTicket;
 	@FXML
 	private Button regReg;
-
+	@FXML
+	private Label mistake;
 	private ArrayList<TextInputControl> textInputControlList = new ArrayList<TextInputControl>();
 	private ArrayList<CheckBox> checkBoxList = new ArrayList<CheckBox>();
-
+	Image image = new Image(getClass().getResourceAsStream("/image/emailError.png"));
 	@FXML
 	private void initialize() {
 		regCountry.setValue("Choose country*");
@@ -108,81 +95,48 @@ public class RegistrationController {
 		checkBoxList
 				.addAll(Arrays.asList(regFleet, regLease, regMobile, regCars, regObject, regGps, regFair, regTicket));
 	}
-
-	
-	
 	public boolean isValidEmailAddress(String email) {
-        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(email);
-        return m.matches();
- }
-	
-	
-	
-	
-	
+		String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+		java.util.regex.Matcher m = p.matcher(email);
+		return m.matches();
+	}
 	@FXML
 	private void fieldChecker() {
-		
 		boolean k;
 		k=isValidEmailAddress(regEMail.getText().toString());
 		System.out.println(k);
-	
-		
-		
-	if(k&&(regEMail.getText().equals(regREMail.getText()))){
-			
-
-			regEMail.getStyleClass().remove("emptyFieldError");
-			
-	}
-		
-	else {
-		
-		
-		//JOptionPane.showMessageDialog(null, "alert!");
-	
-		regReg.setDisable(true);
-		regEMail.getStyleClass().add("emptyFieldError");
-		
-		
-		
-	}
-		
-//		if (eventType.equals("ComboBox")) {
-//			if (regCountry.getValue() == "Germany") {
-//				regCity.setItems(cityListGermany);
-//			} else if (regCountry.getValue() == "Georgia") {
-//				regCity.setItems(cityListGeorgia);
-//			} else {
-//			}
-//		}
-//		
-		
+		if(!k){
+			mistake.setGraphic(new ImageView(image));
+			regReg.setDisable(true);
+		}
+		else {
+			//JOptionPane.showMessageDialog(null, "alert!");
+			mistake.setText("");
+		}
+//    if (eventType.equals("ComboBox")) {
+//       if (regCountry.getValue() == "Germany") {
+//          regCity.setItems(cityListGermany);
+//       } else if (regCountry.getValue() == "Georgia") {
+//          regCity.setItems(cityListGeorgia);
+//       } else {
+//       }
+//    }
+//
 		if (!regFName.getText().isEmpty() && !regLName.getText().isEmpty() && !regEMail.getText().isEmpty()
 				&& (!regREMail.getText().isEmpty() && !regPass.getText().isEmpty()) && !regCPass.getText().isEmpty()
 				&& !regAddress.getText().isEmpty() && regDate.getValue() != null
 				&& (regRBtnMr.isSelected() || regRBtnMrs.isSelected())
 				&& (regFleet.isSelected() || regLease.isSelected() || regMobile.isSelected() || regCars.isSelected()
-						|| regObject.isSelected() || regGps.isSelected() || regFair.isSelected()
-						|| regTicket.isSelected())
+				|| regObject.isSelected() || regGps.isSelected() || regFair.isSelected()
+				|| regTicket.isSelected())
 				&& !regCountry.getValue().equals("Choose country*") && !regCity.getValue().equals("Choose city*"))
-
 		{
-			
 			//regEMail.getStyleClass().remove("emptyFieldError");
 			regReg.setDisable(false);
-			
-			
-//			System.out.println(k);
-			}
-		
+//       System.out.println(k);
+		}
 		else  regReg.setDisable(true);
-		
-		
-				
-	
 		// if (eventType.equals("TextField")) {
 		// if (((TextInputControl) event.getSource()).getText().isEmpty()) {
 		// TextInputControl currentTextField = (TextInputControl)
@@ -195,7 +149,6 @@ public class RegistrationController {
 		// }
 		// }
 		// && _comboBox && _date && _radioButton && _checkBox
-
 		// for (TextInputControl tFieldFromArrayList : textInputControlList) {
 		// if (!tFieldFromArrayList.getText().isEmpty()) {
 		// _textField = true;
@@ -247,7 +200,6 @@ public class RegistrationController {
 		// }
 		// }
 		//
-
 		// }else if (eventType.equals("TextField")) {
 		// if (((TextInputControl) event.getSource()).getText().isEmpty()) {
 		// TextInputControl currentTextField = (TextInputControl)
@@ -259,7 +211,6 @@ public class RegistrationController {
 		// currentTextField.getStyleClass().remove("emptyFieldError");
 		// }
 		// }else
-
 		// int counter = 0;
 		// for (TextInputControl tFieldFromArrayList : textInputControlList) {
 		// if (!tFieldFromArrayList.getText().isEmpty()) {
@@ -287,7 +238,13 @@ public class RegistrationController {
 		// } else {
 		// regReg.setDisable(true);
 		// }
-
 	}
-
+	@FXML
+	private void emailEq(){
+		if(!regEMail.getText().equals(regREMail.getText()))
+		{
+			regREMail.getStyleClass().add("emptyFieldError");
+		}
+		else regREMail.getStyleClass().remove("emptyFieldError");
+	}
 }
