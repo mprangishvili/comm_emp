@@ -55,7 +55,7 @@ public class LoginController {
 	    stage.close();
 	}
 	public void authentication(ActionEvent event) throws IOException, InterruptedException {
-		Parent registration_page_parent = FXMLLoader.load(getClass().getResource("Authorised.fxml"));
+		Parent registration_page_parent = FXMLLoader.load(getClass().getResource("/view/Main.fxml"));
 		Scene registration_page_scene = new Scene(registration_page_parent);
 
 		System.out.println(emailfield.getText());
