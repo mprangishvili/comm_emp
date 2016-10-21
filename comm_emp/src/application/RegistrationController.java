@@ -1,22 +1,14 @@
 package application;
 
 import java.io.IOException;
-//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.JOptionPane;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-//import javafx.scene.control.ComboBoxBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -28,19 +20,9 @@ public class RegistrationController {
     ObservableList<String> cityListGeorgia = FXCollections.observableArrayList("Tbilisi", "Zugdidi");
 
     public void back(ActionEvent event) throws IOException {
-        Parent login_page_parent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-        Scene login_page_scene = new Scene(login_page_parent);
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setScene(login_page_scene);
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
+        StageLoader sl = new StageLoader("Login.fxml", event);
     }
 
-    // private boolean _textField = false;
-// private boolean _comboBox = false;
-// private boolean _date = false;
-// private boolean _radioButton = false;
-// private boolean _checkBox = false;
     @FXML
     private ComboBox<String> regCountry;
     @FXML
@@ -114,9 +96,6 @@ public class RegistrationController {
         checkBoxList
                 .addAll(Arrays.asList(regFleet, regLease, regMobile, regCars, regObject, regGps, regFair, regTicket));
     }
-
-
-
 
 
     @FXML
@@ -272,14 +251,12 @@ public class RegistrationController {
     }
 
 
-
-
     @FXML
     private void ReEmailCheck() {
 
-     //   TextInputControl emailfield = (TextInputControl) emailEvent.getSource();
+        //   TextInputControl emailfield = (TextInputControl) emailEvent.getSource();
         //System.out.println(emailfield.getId());
-      //  if(emailfield.getId().equals("regREMail"))
+        //  if(emailfield.getId().equals("regREMail"))
 
         if (regEMail.getText().equals(regREMail.getText())) {
 
@@ -295,28 +272,25 @@ public class RegistrationController {
 
 
     @FXML
-    private void PassCheck(){
-        boolean p=PassValidator(regPass.getText().toString());
+    private void PassCheck() {
+        boolean p = PassValidator(regPass.getText().toString());
         System.out.println(p);
-
-
 
 
     }
 
 
-
     @FXML
-    private boolean PassValidator(String password){
+    private boolean PassValidator(String password) {
 
- password="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$";
+        password = "^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(password);
         java.util.regex.Matcher m = p.matcher(password);
         return m.matches();
     }
 
     @FXML
-    private void PassReCheck(){
+    private void PassReCheck() {
         System.out.println("ffff");
     }
 
