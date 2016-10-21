@@ -21,8 +21,14 @@ public class LoginController {
     @FXML
     private Pane loginPane;
 
+    @FXML
     public void registration(ActionEvent event) throws IOException, InterruptedException {
         StageLoader sl = new StageLoader("Registration.fxml", event);
+    }
+
+    @FXML
+    public void forgotPasswordAppear(ActionEvent event) throws IOException {
+        StageLoader sl = new StageLoader("ForgotPassword.fxml", event);
     }
 
     @FXML
