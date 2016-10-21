@@ -271,11 +271,7 @@ public class RegistrationController {
         // }
     }
 
-    @FXML
-    private void PassCheck(String getPassword){
-        boolean p=PassValidator(regPass.getText().toString());
 
-    }
 
 
     @FXML
@@ -298,22 +294,30 @@ public class RegistrationController {
     }
 
 
+    @FXML
+    private void PassCheck(){
+        boolean p=PassValidator(regPass.getText().toString());
+        System.out.println(p);
 
+
+
+
+    }
 
 
 
     @FXML
     private boolean PassValidator(String password){
 
-String passwordcheckRule="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(passwordcheckRule);
-        java.util.regex.Matcher m = p.matcher(passwordcheckRule);
+ password="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{8,}$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(password);
+        java.util.regex.Matcher m = p.matcher(password);
         return m.matches();
     }
 
     @FXML
     private void PassReCheck(){
-
+        System.out.println("ffff");
     }
 
 
