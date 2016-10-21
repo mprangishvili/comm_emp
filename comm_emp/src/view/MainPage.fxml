@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,7 +10,7 @@
    <center>
       <Pane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER">
          <children>
-            <Button id="record-sales" layoutX="277.0" layoutY="250.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="245.0" text="Online Chat" textFill="WHITE">
+            <Button id="record-sales" fx:id="onlineChat_button" layoutX="277.0" layoutY="250.0" mnemonicParsing="false" onAction="#callOnlineChat" prefHeight="100.0" prefWidth="245.0" text="Online Chat" textFill="WHITE">
                <font>
                   <Font size="29.0" />
                </font>
