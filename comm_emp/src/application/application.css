@@ -1,10 +1,6 @@
 .login_btn:hover {
-    -fx-background-color: '#fac200' !important;
-    -fx-text-fill: '#213f68' !important;
-}
-
-#regBack:hover {
-    -fx-background-color: '#d61110' !important;
+    /*-fx-background-color: '#fac200' !important;*/
+    /*-fx-text-fill: '#213f68' !important;*/
 }
 
 #authorised_pane {
@@ -15,27 +11,44 @@
 #exitButton:hover {
     -fx-background-color: 'fac200' !important;
     -fx-text-fill: black !important;
-
 }
 
 .button_style {
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    /*-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),*/
-    /*#9d4024,*/
-    /*#d86e3a,*/
-    /*radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);*/
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-font-weight: bold;
-    -fx-font-size: 29px;
+    -fx-font-size: 22px;
 }
 
-.button_style:hover {
-    /*-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),*/
-    /*#9d4024,*/
-    /*#d86e3a,*/
-    /*radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);*/
+.button_style_red {
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+    #9d4024,
+    #b31b1a,
+    radial-gradient(center 50% 50%, radius 100%, #b31b1a, #c54e2c);
+}
+
+.button_style_red:hover {
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+    #9d4024,
+    #d61110,
+    radial-gradient(center 50% 50%, radius 100%, #d61110, #c54e2c);
+}
+
+.button_style_blue {
+    -fx-font-size: 18px !important;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #163668 0%, #0a2268 100%),
+    #0a2268,
+    #2d649a,
+    radial-gradient(center 50% 50%, radius 100%, #2d649a, #232668);
+}
+
+.button_style_blue:hover {
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #163668 0%, #0a2268 100%),
+    #0a2268,
+    #3b9ade,
+    radial-gradient(center 50% 50%, radius 100%, #3b9ade, #232668);
 }
 
 .button_style:pressed {

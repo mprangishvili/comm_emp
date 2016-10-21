@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Double?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Polygon?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrationController">
 	<center>
 		<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" BorderPane.alignment="CENTER">
 			<children>
@@ -299,33 +287,41 @@
                   <Label fx:id="mistakecountrySelect" alignment="TOP_LEFT" layoutX="1.0" layoutY="195.0" prefHeight="48.0" prefWidth="48.0" text="X" />
 					</children>
 				</Pane>
-				<Pane layoutX="100.0" layoutY="731.0" prefHeight="54.0" prefWidth="700.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
+				<Pane layoutX="100.0" layoutY="731.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
 					<effect>
 						<DropShadow color="#00000067" />
 					</effect>
 					<children>
-						<Button id="regBack" layoutX="100.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #b31b1a;" styleClass="regBack" text="Back" textFill="WHITE">
-							<font>
-								<Font size="20.0" />
-							</font>
-							<cursor>
-								<Cursor fx:constant="HAND" />
-							</cursor>
-							<effect>
-								<DropShadow color="#0000007e" />
-							</effect>
-						</Button>
-						<Button id="regReg" fx:id="regReg" disable="true" layoutX="375.0" layoutY="8.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: #213f68;" styleClass="login_btn" text="Register" textFill="WHITE">
-							<font>
-								<Font size="20.0" />
-							</font>
-							<cursor>
-								<Cursor fx:constant="HAND" />
-							</cursor>
-							<effect>
-								<DropShadow color="#0000007e" />
-							</effect>
-						</Button>
+      						<Button id="regBack" layoutX="100.0" layoutY="8.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="225.0" text="Back" textFill="WHITE">
+      							<font>
+      								<Font size="20.0" />
+      							</font>
+      							<cursor>
+      								<Cursor fx:constant="HAND" />
+      							</cursor>
+      							<effect>
+      								<DropShadow color="#0000007e" />
+      							</effect>
+                     <styleClass>
+                        <String fx:value="button_style_red" />
+                        <String fx:value="button_style" />
+                     </styleClass>
+      						</Button>
+      						<Button id="regReg" fx:id="regReg" disable="true" layoutX="375.0" layoutY="8.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" text="Register" textFill="WHITE">
+      							<font>
+      								<Font size="20.0" />
+      							</font>
+      							<cursor>
+      								<Cursor fx:constant="HAND" />
+      							</cursor>
+      							<effect>
+      								<DropShadow color="#0000007e" />
+      							</effect>
+                     <styleClass>
+                        <String fx:value="button_style" />
+                        <String fx:value="button_style_blue" />
+                     </styleClass>
+      						</Button>
 					</children>
 				</Pane>
 				<Pane layoutX="100.0" layoutY="216.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #213f68; -fx-background-radius: 5;">
