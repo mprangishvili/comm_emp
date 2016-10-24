@@ -1,5 +1,6 @@
 package application;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.IOException;
+import java.sql.*;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -21,6 +23,9 @@ import javax.mail.internet.MimeMessage;
 public class ForgotPasswordController {
     @FXML
     private TextField resetEmail;
+
+    @FXML
+    private Label warningLabel;
 
     @FXML
     private Label resetPasswordInstruction;
@@ -36,12 +41,15 @@ public class ForgotPasswordController {
 
     protected String tempocode;
 
+
     @FXML
     private void loadLogin(ActionEvent event) throws IOException, InterruptedException {
 
         StageLoader sl = new StageLoader("Login.fxml", event);
 
     }
+
+    static int count;
 
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -57,7 +65,7 @@ public class ForgotPasswordController {
     }
 
     @FXML
-    private void sendOnSubmit() {
+    private void sendOnSubmit() throws SQLException {
         String sender_mail = "verifyourpwd@gmail.com";
         String sender_password = "18052010M+m";
         String recipient = resetEmail.getText();
@@ -71,38 +79,65 @@ public class ForgotPasswordController {
         sendPassword(sender_mail, sender_password, recipient, subject, body);
     }
 
-    private void sendPassword(String sender, String pass, String reciever, String subject, String body) {
-
-
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", reciever);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
-
+    private void sendPassword(String sender, String pass, String reciever, String subject, String body) throws SQLException {
+        count=0;
         try {
-            System.out.println("ok");
-            message.setFrom(new InternetAddress(sender));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(reciever));
-            message.setSubject(subject);
-            message.setText(body);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, sender, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        } catch (AddressException ae) {
-            ae.printStackTrace();
-        } catch (MessagingException me) {
-            me.printStackTrace();
+            Connection connect = null;
+            PreparedStatement stmt = null;
+            ResultSet resultSet = null;
+            connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
+            stmt = connect.prepareStatement("select * from users where email = ?");
+            stmt.setString(1, resetEmail.getText());
+
+            resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                if (resultSet.getString("email").equals(resetEmail.getText())) {
+                    warningLabel.setVisible(false);
+                    System.out.println("HI");
+                    Properties props = System.getProperties();
+                    String host = "smtp.gmail.com";
+                    props.put("mail.smtp.starttls.enable", "true");
+                    props.put("mail.smtp.host", host);
+                    props.put("mail.smtp.user", reciever);
+                    props.put("mail.smtp.password", pass);
+                    props.put("mail.smtp.port", "587");
+                    props.put("mail.smtp.auth", "true");
+
+                    Session session = Session.getDefaultInstance(props);
+                    MimeMessage message = new MimeMessage(session);
+
+                    try {
+                        System.out.println("ok");
+                        message.setFrom(new InternetAddress(sender));
+                        message.addRecipient(Message.RecipientType.TO, new InternetAddress(reciever));
+                        message.setSubject(subject);
+                        message.setText(body);
+                        Transport transport = session.getTransport("smtp");
+                        transport.connect(host, sender, pass);
+                        transport.sendMessage(message, message.getAllRecipients());
+                        transport.close();
+                    } catch (AddressException ae) {
+                        ae.printStackTrace();
+                    } catch (MessagingException me) {
+                        me.printStackTrace();
+                    }
+
+                    resetCodeFunc();
+                }
+
+            } else {
+
+                warningLabel.setVisible(true);
+                warningLabel.setText("This email doesn't exist in our system!");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        resetCodeFunc();
+
     }
 
     public void resetCodeFunc() {
@@ -112,14 +147,22 @@ public class ForgotPasswordController {
         userIcon.visibleProperty().setValue(false);
         submitCodeBtn.setVisible(true);
 
-
     }
 
     @FXML
     private void newPasswordPrompt(ActionEvent event) throws IOException, InterruptedException {
-        if (resetEmail.getText().equals(tempocode)) {
-            StageLoader sdddl = new StageLoader("NewPasswordPane.fxml", event);
 
+        if (resetEmail.getText().equals(tempocode)) {
+            warningLabel.setVisible(false);
+            StageLoader sdddl = new StageLoader("NewPasswordPane.fxml", event);
+        }
+        else{
+        ++count;
+            warningLabel.setVisible(true);
+            warningLabel.setText("The code is not correct!");
+            if(count==3){
+                System.out.println("Locked");
+            }
         }
     }
 
