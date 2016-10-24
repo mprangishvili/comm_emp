@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 public class LoginController {
     @FXML
     private Pane loginPane;
+    @FXML
+    private Pane rememberMe_CheckBox_Pane;
 
     @FXML
     public void registration(ActionEvent event) throws IOException, InterruptedException {
@@ -32,22 +34,21 @@ public class LoginController {
     }
 
     @FXML
-    private Button exitB;
+    private void initialize() {
+        SlideCheckBox loginCheckBox = new SlideCheckBox();
+        rememberMe_CheckBox_Pane.getChildren().addAll(loginCheckBox);
+        loginCheckBox.setScaleX(0.5);
+        loginCheckBox.setScaleY(0.5);
+        ActionEvent event = new ActionEvent();
+        Exit exit = new Exit(loginPane);
+    }
+
     @FXML
     private Label warning;
     @FXML
     private TextField emailfield;
     @FXML
     private TextField passwordfield;
-
-
-    @FXML
-    private void closeButtonAction() {
-
-        Stage stage = (Stage) exitB.getScene().getWindow();
-
-        stage.close();
-    }
 
     public void authentication(ActionEvent event) throws IOException, InterruptedException {
         String user = emailfield.getText();
@@ -73,9 +74,8 @@ public class LoginController {
                     System.out.println("no");
                 }
 
-            }
-
-            warning.setText("Check your Username and Password !");
+            } else
+                warning.setText("Check your Username and Password !");
             passwordfield.setText("");
 
             System.out.println("Check your Username and Password");

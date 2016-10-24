@@ -24,6 +24,8 @@ public class RegistrationController {
     }
 
     @FXML
+    private Pane registrationPane;
+    @FXML
     private ComboBox<String> regCountry;
     @FXML
     private ComboBox<String> regCity;
@@ -95,6 +97,7 @@ public class RegistrationController {
                 .addAll(Arrays.asList(regFName, regLName, regEMail, regREMail, regPass, regCPass, regAddress));
         checkBoxList
                 .addAll(Arrays.asList(regFleet, regLease, regMobile, regCars, regObject, regGps, regFair, regTicket));
+        Exit exit = new Exit(registrationPane);
     }
 
 
