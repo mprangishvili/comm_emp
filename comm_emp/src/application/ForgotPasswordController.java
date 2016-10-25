@@ -1,6 +1,7 @@
 package application;
 
-
+import com.sun.glass.ui.Accessible;
+import com.sun.glass.ui.Timer;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import sun.reflect.annotation.ExceptionProxy;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -20,6 +22,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
+import java.util.TimerTask;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -27,6 +30,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class ForgotPasswordController {
+
+    public static String userEmail = null;
+
     @FXML
     private TextField resetEmail;
 
@@ -61,12 +67,26 @@ public class ForgotPasswordController {
     private Pane newPasswordPane;
 
     @FXML
+    private TextField newpass1;
+
+    @FXML
+    private TextField newpass2;
+
+    @FXML
+    private Button resetEmailBtn;
+
+    @FXML
+    private Label labelWarning;
+
+    @FXML
     private void loadLogin(ActionEvent event) throws IOException, InterruptedException {
 
         StageLoader sl = new StageLoader("Login.fxml", event);
 
     }
 
+
+    //Calling Exit class, that Exits the applications
     @FXML
     private void initialize() {
         //forgotPasswordPane.setVisible(true);
@@ -76,8 +96,10 @@ public class ForgotPasswordController {
 
     static int count;
 
+
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+    //Generating verification code
     public String randomAlphaNumeric(int count) {
         StringBuilder builder = new StringBuilder();
         while (count-- != 0) {
@@ -89,8 +111,10 @@ public class ForgotPasswordController {
         return tempocode;
     }
 
+    //Loading image gif
     Image image = new Image(getClass().getResourceAsStream("/image/load.gif"));
 
+    //method called when button "reset" is pressed
     @FXML
     private void sendOnSubmit() throws SQLException {
 
@@ -108,17 +132,22 @@ public class ForgotPasswordController {
             warningLabel.setText("This email doesn't exist in our system!");
         }
 
+
+        userEmail = resetEmail.getText();
+
     }
 
     private Thread threadTwo;
     private Thread threadOne;
 
-    private void sendPassword(String sender, String pass, String reciever, String subject, String body) throws SQLException {
+    //helper method for SENDONSUBMIT. Makes a connection and sends email with the verification code to user
+    public void sendPassword(String sender, String pass, String reciever, String subject, String body) throws SQLException {
         count = 0;
         try {
             Connection connect = null;
             PreparedStatement stmt = null;
             ResultSet resultSet = null;
+
             connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
             stmt = connect.prepareStatement("select * from users where email = ?");
             stmt.setString(1, resetEmail.getText());
@@ -134,7 +163,7 @@ public class ForgotPasswordController {
                             loadImage.setVisible(true);
                         }
                     };
-
+                    System.out.println("2 " + resetEmail.getText());
                     threadOne = new Thread() {
                         public void run() {
                             warningLabel.setVisible(false);
@@ -170,25 +199,25 @@ public class ForgotPasswordController {
                             }
                         }
                     };
-
-
                     threadOne.start();
                     threadTwo.start();
 
-
-                } else {
-                    warningLabel.setVisible(true);
-                    warningLabel.setText("This email doesn't exist in our system!");
-
                 }
+
+            } else {
+                System.out.println("kklj");
+                warningLabel.setVisible(true);
+                warningLabel.setText("This email doesn't exist in our system!");
             }
+            connect.close();
+            System.out.println("First connection CLOSED");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
     }
 
+    //Method that prompts user to enter the code, sent to the email
     public void resetCodeFunc() {
         mainPane.setVisible(true);
         loadImage.setVisible(false);
@@ -203,12 +232,26 @@ public class ForgotPasswordController {
         });
     }
 
+
+    //method that calles new password panel, where user should enter new password and confirm it
     @FXML
-    private void newPasswordPrompt(ActionEvent event) throws IOException, InterruptedException {
+    private void newPasswordPrompt(ActionEvent event) throws IOException, InterruptedException, SQLException {
+
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+
+            tempocode+="A";
+                System.out.println(tempocode);
+            }
+        }, 1*60*1000);
+
 
         if (resetEmail.getText().equals(tempocode)) {
             warningLabel.setVisible(false);
+
             StageLoader sdddl = new StageLoader("NewPasswordPane.fxml", event);
+
         } else {
             ++count;
             warningLabel.setVisible(true);
@@ -218,6 +261,48 @@ public class ForgotPasswordController {
 //                Thread.sleep(5000);
 //            }
         }
+    }
+
+    //method called on resetPasswordBtn, checks if the previous password was the same and sets a new one if not
+    @FXML
+    private void resetEmail() {
+
+        try {
+            Connection connect = null;
+            Connection connect2 = null;
+            PreparedStatement state = null;
+            PreparedStatement state2 = null;
+            ResultSet rsSet = null;
+            ResultSet rsSet2 = null;
+            connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
+            System.out.println("connection OK");
+
+            state = connect.prepareStatement("select validation('" + userEmail + "','" + newpass1.getText() + "')");
+            rsSet = state.executeQuery();
+            System.out.println("for aleko " + userEmail + " password " + newpass1.getText());
+            if (rsSet.next()) {
+                System.out.println(rsSet.getBoolean("validation"));
+                if (rsSet.getBoolean("validation")) {
+                    System.out.println("password is in db");
+                    labelWarning.setText("Do not use the previous password!");
+                } else {
+                    if(newpass1.getText().equals(newpass2.getText())) {
+                        state2 = connect.prepareStatement("select changepassword('" + userEmail + "','" + newpass1.getText() + "')");
+                        System.out.println("for aleko " + userEmail + " password " + newpass1.getText());
+                        rsSet2 = state2.executeQuery();
+                    }
+                    else{
+                        labelWarning.setText("The passwords do not match!");
+                    }
+                }
+            } else {
+                System.out.println("DATABASE ERROR");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
