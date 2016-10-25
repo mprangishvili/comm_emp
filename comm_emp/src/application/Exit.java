@@ -1,10 +1,13 @@
 package application;
 
+import javafx.animation.FadeTransition;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Exit {
 
@@ -22,5 +25,6 @@ public class Exit {
         exitBtn.setLayoutX(780);
         exitBtn.setStyle("-fx-background-color: #0a2268;-fx-text-fill: white;-fx-cursor: hand");
         pane.getChildren().addAll(exitBtn);
+        pane.setVisible(true);
     }
 }

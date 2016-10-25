@@ -40,14 +40,14 @@
     -fx-font-size: 18px !important;
     -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #163668 0%, #0a2268 100%),
     #0a2268,
-    #2d649a,
+    #2a5386,
     radial-gradient(center 50% 50%, radius 100%, #2d649a, #232668);
 }
 
 .button_style_blue:hover {
     -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #163668 0%, #0a2268 100%),
     #0a2268,
-    #3b9ade,
+    #1d4a6d,
     radial-gradient(center 50% 50%, radius 100%, #3b9ade, #232668);
 }
 
@@ -62,9 +62,9 @@
 }
 
 /*.check-box {*/
-    /*-fx-shape: "M14.596,2.055L12.455,0C9.687,2.884,6.011,6.714,5.158,7.602L2.055,4.624L0,6.765l5.242,5.037l0.003-0.004 l0 .003, 0.004 L14 .596, 2.055 z ";*/
-    /*-fx-scale-x: 2;*/
-    /*-fx-scale-y: 2;*/
-    /*-fx-translate-x: 5px;*/
-    /*-fx-translate-y: -3px;*/
+/*-fx-shape: "M14.596,2.055L12.455,0C9.687,2.884,6.011,6.714,5.158,7.602L2.055,4.624L0,6.765l5.242,5.037l0.003-0.004 l0 .003, 0.004 L14 .596, 2.055 z ";*/
+/*-fx-scale-x: 2;*/
+/*-fx-scale-y: 2;*/
+/*-fx-translate-x: 5px;*/
+/*-fx-translate-y: -3px;*/
 /*}*/

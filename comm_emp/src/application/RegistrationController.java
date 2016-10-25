@@ -97,7 +97,7 @@ public class RegistrationController {
                 .addAll(Arrays.asList(regFName, regLName, regEMail, regREMail, regPass, regCPass, regAddress));
         checkBoxList
                 .addAll(Arrays.asList(regFleet, regLease, regMobile, regCars, regObject, regGps, regFair, regTicket));
-        Exit exit = new Exit(registrationPane);
+//        Exit exit = new Exit(registrationPane);
     }
 
 
