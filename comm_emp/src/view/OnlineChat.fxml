@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="application.OnlineChatController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OnlineChatController">
     <center>
-        <Pane id="mainPane" fx:id="onlineChatPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0"
-              prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER"/>
+        <Pane id="mainPane" fx:id="onlineChatPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="transitionBtn" layoutX="94.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#transition" text="Button" />
+            <Pane fx:id="transitionPane" layoutX="291.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" />
+         </children></Pane>
     </center>
 </BorderPane>

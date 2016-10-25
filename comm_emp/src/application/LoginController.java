@@ -5,23 +5,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
     private Pane loginPane;
     @FXML
     private Pane rememberMe_CheckBox_Pane;
+    @FXML
+    private Pane authorisationPanelPane;
+    @FXML
+    private ImageView loader;
 
     @FXML
     public void registration(ActionEvent event) throws IOException, InterruptedException {
@@ -39,8 +45,6 @@ public class LoginController {
         rememberMe_CheckBox_Pane.getChildren().addAll(loginCheckBox);
         loginCheckBox.setScaleX(0.5);
         loginCheckBox.setScaleY(0.5);
-        ActionEvent event = new ActionEvent();
-        Exit exit = new Exit(loginPane);
     }
 
     @FXML
@@ -51,6 +55,20 @@ public class LoginController {
     private TextField passwordfield;
 
     public void authentication(ActionEvent event) throws IOException, InterruptedException {
+        new Thread(() -> {
+            loader.setVisible(true);
+            authorisationPanelPane.setVisible(false);
+
+        }).start();
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        loader.setVisible(false);
+                        authorisationPanelPane.setVisible(true);
+                    }
+                }, 1000);
+
         String user = emailfield.getText();
         String pass = passwordfield.getText();
 
@@ -63,32 +81,25 @@ public class LoginController {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Boolean passcheck = rs.getBoolean("validation");
-                System.out.println(passcheck);
-
-                if (passcheck) {
-                    System.out.println("equals");
+                if (rs.getBoolean("validation")) {
                     StageLoader sl = new StageLoader("MainPage.fxml", event);
-
                 } else {
-                    System.out.println("no");
+                    warning.setText("Check your Username and Password !");
                 }
 
-            } else
+            } else {
                 warning.setText("Check your Username and Password !");
-            passwordfield.setText("");
-
-            System.out.println("Check your Username and Password");
-
+                passwordfield.setText("");
+            }
         } catch (Exception e) {
 
 
-            System.out.println("check!!!!");
+            System.out.println(e);
             e.printStackTrace();
-
         }
 
     }
+
 
     public void KeyEvent() {
         passwordfield.setOnKeyPressed(new EventHandler<KeyEvent>() {
