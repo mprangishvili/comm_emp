@@ -291,17 +291,18 @@ public class ForgotPasswordController {
             connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
             System.out.println("connection OK");
             state = connect.prepareStatement("select validation('" + userEmail + "','" + newpass1.getText() + "')");
-            rsSet = state.executeQuery();
-            //System.out.println("for aleko " + userEmail + " password " + newpass1.getText());
-            if (rsSet.next()) {
-                System.out.println(rsSet.getBoolean("validation"));
-                if (rsSet.getBoolean("validation")) {
-                    System.out.println("password is in db");
-                    labelWarning.setText("Do not use the previous password!");
-                } else {
-                    boolean valid = PassValidator(newpass1.getText());
-                    if(valid){
-                        if (newpass1.getText().equals(newpass2.getText())) {
+
+            if(newpass1.getText().equals(newpass2.getText())){
+                rsSet = state.executeQuery();
+                while(rsSet.next()){
+                    System.out.println(rsSet.getBoolean("validation"));
+                    if (rsSet.getBoolean("validation")) {
+                        System.out.println("password is in db");
+                   labelWarning.setText("Do not use the previous password!");
+                    }
+                    else{
+                        boolean valid = PassValidator(newpass1.getText());
+                        if(valid){
                             labelWarning.setVisible(false);
                             state2 = connect.prepareStatement("select changepassword('" + userEmail + "','" + newpass1.getText() + "')");
                             System.out.println("for aleko " + userEmail + " password " + newpass1.getText());
@@ -311,20 +312,18 @@ public class ForgotPasswordController {
                             succsessGif.setVisible(true);
 
                             succsessLabel.setText("Your password was succesfully changed!");
-
-                        } else {
+                        }
+                        else {
                             labelWarning.setVisible(true);
-                            labelWarning.setText("The passwords do not match!");
+                            labelWarning.setText("The password should have at least one capital letter, one number and one symbol!");
                         }
                     }
-                    else {
-                        labelWarning.setVisible(true);
-                        labelWarning.setText("The password should have at least one capital letter, one number and one symbol!");
-                    }
-
                 }
-            } else {
-                System.out.println("asdasd");
+            }
+            else{
+                System.out.println("do not match");
+                labelWarning.setText("The passwords do not match!");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
