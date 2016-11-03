@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.mainPageController">
    <center>
       <Pane id="mainPane" fx:id="mainPagePane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main_pane" BorderPane.alignment="CENTER">
          <children>
-            <Button id="record-sales" fx:id="onlineChat_button" layoutX="277.0" layoutY="250.0" mnemonicParsing="false" onAction="#callOnlineChat" prefHeight="100.0" prefWidth="245.0" text="Online Chat" textFill="WHITE">
+            <ImageView fx:id="chatLogo" fitHeight="260.0" fitWidth="238.0" layoutX="26.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" styleClass="mainPagebtns">
+               <image>
+                  <Image url="@../image/chat.png" />
+               </image></ImageView>
+            <ImageView fx:id="massageLogo" fitHeight="225.0" fitWidth="238.0" layoutX="286.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" styleClass="mainPagebtns">
+               <image>
+                  <Image url="@../image/massageLogo.png" />
+               </image></ImageView>
+            <ImageView fx:id="orderLunchLogo" fitHeight="203.0" fitWidth="239.0" layoutX="535.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" styleClass="mainPagebtns">
+               <image>
+                  <Image url="@../image/LunchLogo.png" />
+               </image>
+               <effect>
+                  <DropShadow color="#000000b3" />
+               </effect></ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="22.0" prefHeight="16.0" prefWidth="123.0" text="Online Chat" textAlignment="CENTER" textFill="#06214c">
                <font>
-                  <Font size="29.0" />
+                  <Font size="18.0" />
                </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
+            </Label>
+            <Label alignment="CENTER" layoutX="286.0" layoutY="22.0" prefHeight="21.0" prefWidth="236.0" text="Book a Massage" textAlignment="CENTER" textFill="#06214c">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="590.0" layoutY="22.0" prefHeight="21.0" prefWidth="128.0" text="Book a Lunch" textAlignment="CENTER" textFill="#06214c">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children></Pane>
    </center>
 </BorderPane>

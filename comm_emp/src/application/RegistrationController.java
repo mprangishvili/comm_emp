@@ -30,7 +30,7 @@ public class RegistrationController {
     //String usertemp=null,lastnametemp=null,emailtemp=null,reemailtemp=null,addresstemp=null;
     public void back(ActionEvent event) throws IOException {
 
-        StageLoader sl = new StageLoader("Login.fxml", event);
+        new StageLoader("Login.fxml", event);
 //        usertemp=regFName.getText();
 //        lastnametemp=regLName.getText();
 //        emailtemp=regEMail.getText();
@@ -301,7 +301,7 @@ public class RegistrationController {
     @FXML
     private void countryCheck() {
 
-        if (regCountry.getValue()=="Choose country*"|| regCountry.getValue()=="") {
+        if (regCountry.getValue() == "Choose country*" || regCountry.getValue() == "") {
             warnlabel.setText("Please select country!");
             mistakecountrySelect.setVisible(true);
             mistakecountrySelect.setGraphic(new ImageView(image));
@@ -341,7 +341,7 @@ public class RegistrationController {
         AutocompleteClass.autoCompleteComboBoxPlus(regCity, (typedText, itemToCompare) -> itemToCompare.toLowerCase().contains(typedText.toLowerCase()) ||
                 itemToCompare.toString().equals(typedText));
         System.out.println(regCity.getValue());
-        if ( regCity.getValue()==null) {
+        if (regCity.getValue() == null) {
             warnlabel.setText("Please select city!");
             mistakeCitySelect.setVisible(true);
             mistakeCitySelect.setGraphic(new ImageView(image));
@@ -376,7 +376,7 @@ public class RegistrationController {
     @FXML
     private void date() {
 
-        if (regDate.getValue()==null  )
+        if (regDate.getValue() == null)
 
         {
             warnlabel.setText("please select your birth Date!");
@@ -453,7 +453,7 @@ public class RegistrationController {
             System.out.println("data added to the table");
 
 
-            StageLoader m = new StageLoader("Login.fxml", event);
+            new StageLoader("Login.fxml", event);
 
 
         } catch (Exception e) {

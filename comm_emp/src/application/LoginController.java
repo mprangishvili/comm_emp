@@ -74,11 +74,11 @@ public class LoginController {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             connection = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
-            stmt = connection.prepareStatement("select validation('" + emailfield.getText() + "','" + passwordfield.getText() + "')");
+            stmt = connection.prepareStatement("select * from validation('" + emailfield.getText() + "','" + passwordfield.getText() + "')");
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                if (rs.getBoolean("validation")) {
+                if (rs.getBoolean("validation_result")) {
                     new StageLoader("MainPage.fxml", event);
                 } else {
                     warning.setText("Check your Username and Password !");
