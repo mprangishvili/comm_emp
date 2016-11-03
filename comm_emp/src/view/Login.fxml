@@ -94,9 +94,9 @@
                         </Pane>
                         <Pane layoutX="49.0" layoutY="9.0" prefHeight="70.0" prefWidth="350.0" style="-fx-background-color: #213f68; -fx-background-radius: 5;">
                             <children>
-                                <Label layoutX="86.0" layoutY="10.0" prefHeight="50.0" prefWidth="178.0" style="-fx-text-fill: white;" text="SIGN IN" textAlignment="CENTER">
+                                <Label alignment="CENTER" layoutX="86.0" layoutY="10.0" prefHeight="50.0" prefWidth="178.0" style="-fx-text-fill: white;" text="SIGN IN" textAlignment="CENTER">
                                     <font>
-                                        <Font name="System Bold" size="41.0" />
+                                        <Font name="DejaVu Sans Bold" size="41.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -125,15 +125,15 @@
                         </Pane>
                         <Pane fx:id="bottom_Login_Pane" layoutX="49.0" layoutY="233.0" prefHeight="54.0" prefWidth="350.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
                             <children>
-                                <Button id="loginSI" layoutX="206.0" layoutY="7.0" mnemonicParsing="false" onAction="#authentication" prefHeight="25.0" prefWidth="118.0" text="Sign in" textFill="WHITE">
+                                <Button id="loginSI" layoutX="206.0" layoutY="7.0" mnemonicParsing="false" onAction="#authentication" prefHeight="20.0" prefWidth="118.0" text="Sign in" textFill="WHITE">
                                     <effect>
-                                        <DropShadow color="#00000067" />
+                                        <DropShadow color="#000000b2" />
                                     </effect>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                     <font>
-                                        <Font size="16.0" />
+                                        <Font size="15.0" />
                                     </font>
                                     <styleClass>
                                         <String fx:value="button_style_blue" />
@@ -154,18 +154,18 @@
                                 <DropShadow color="#00000067" />
                             </effect>
                         </Pane>
-                  <Label fx:id="warning" alignment="CENTER" layoutX="1.0" layoutY="344.0" prefHeight="48.0" prefWidth="445.0" textAlignment="RIGHT" textFill="RED">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
+                        <Label fx:id="warning" alignment="CENTER" layoutX="1.0" layoutY="344.0" prefHeight="48.0" prefWidth="445.0" textAlignment="RIGHT" textFill="RED">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
                     </children>
                 </Pane>
-            <ImageView fitHeight="132.0" fitWidth="370.0" layoutX="215.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/c4y_logo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="132.0" fitWidth="370.0" layoutX="215.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/c4y_logo.png" />
+                    </image>
+                </ImageView>
                 <ImageView fx:id="loader" fitHeight="183.0" fitWidth="120.0" layoutX="340.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true" visible="false">
                     <image>
                         <Image url="@../image/loader.gif" />

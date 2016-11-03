@@ -16,11 +16,11 @@ public class MainController {
 
     @FXML
     private void callOnlineChat(ActionEvent event) throws IOException {
-        StageLoader sl = new StageLoader("OnlineChat.fxml", event);
+        new StageLoader("OnlineChat.fxml", event);
     }
 
     @FXML
     private void initialize() {
-        Exit exit = new Exit(mainPagePane);
+//        Exit exit = new Exit(mainPagePane);
     }
 }

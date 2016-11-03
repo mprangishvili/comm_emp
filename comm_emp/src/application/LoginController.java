@@ -5,9 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import view.SlideCheckBox;
 
 public class LoginController {
     @FXML
@@ -31,12 +29,12 @@ public class LoginController {
 
     @FXML
     public void registration(ActionEvent event) throws IOException, InterruptedException {
-        StageLoader sl = new StageLoader("Registration.fxml", event);
+        new StageLoader("Registration.fxml", event);
     }
 
     @FXML
     public void forgotPasswordAppear(ActionEvent event) throws IOException {
-        StageLoader sl = new StageLoader("ForgotPassword.fxml", event);
+        new StageLoader("ForgotPassword.fxml", event);
     }
 
     @FXML
@@ -58,7 +56,6 @@ public class LoginController {
         new Thread(() -> {
             loader.setVisible(true);
             authorisationPanelPane.setVisible(false);
-
         }).start();
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -82,7 +79,7 @@ public class LoginController {
 
             if (rs.next()) {
                 if (rs.getBoolean("validation")) {
-                    StageLoader sl = new StageLoader("MainPage.fxml", event);
+                    new StageLoader("MainPage.fxml", event);
                 } else {
                     warning.setText("Check your Username and Password !");
                 }

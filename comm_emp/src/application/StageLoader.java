@@ -21,11 +21,11 @@ public class StageLoader {
     public StageLoader(String fxmlFileName, ActionEvent event) throws IOException {
         BorderPane registration_page_parent = (BorderPane) FXMLLoader.load(getClass().getResource("/view/" + fxmlFileName));
         Scene registration_page_scene = new Scene(registration_page_parent, width, height);
-        registration_page_scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        registration_page_scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(registration_page_scene);
         primaryStage.show();
-        FadeTransition ft = new FadeTransition(Duration.millis(1500.0d), registration_page_parent);
+        FadeTransition ft = new FadeTransition(Duration.millis(700.0d), registration_page_parent);
         ft.setFromValue(0);
         ft.setToValue(1.0);
         ft.play();
@@ -34,7 +34,7 @@ public class StageLoader {
     public StageLoader(String fxmlFileName, Stage primaryStage) throws IOException {
         BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/view/" + fxmlFileName));
         Scene scene = new Scene(root, width, height);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
