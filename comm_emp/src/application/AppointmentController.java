@@ -38,13 +38,12 @@ public class AppointmentController {
     public void initialize() throws SQLException, ParseException {
         Accordion accordion = new Accordion();
         accordion.setMinSize(600, 200);
-        Group g = new Group();
         Connection connect = null;
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
         connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
         System.out.println("name " + LoginController._userName);
-        stmt = connect.prepareStatement("select * from massage_appointment where user_id=4");
+        stmt = connect.prepareStatement("select * from massage_appointment where user_id=2");
         resultSet = stmt.executeQuery();
         String isPaid = null;
 
@@ -82,11 +81,14 @@ public class AppointmentController {
             }
             hbox.getChildren().addAll(vBox, paidLabel);
             accordion.getPanes().addAll(titledPane);
+            titledPane.setStyle("-fx-text-fill: white");
+            paidLabel.setStyle("-fx-border-color: lightgreen; -fx-background-color: lightgreen; -fx-border-radius: 1px; -fx-padding: 0.3em; -fx-text-fill: white");
 
 
         }
 
         connect.close();
+
 
         flowPane.getChildren().add(accordion);
     }

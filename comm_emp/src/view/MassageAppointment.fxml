@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AppointmentController">
+   <center>
+      <Pane fx:id="massagePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="809.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="mainPane" layoutX="100.0" layoutY="34.0" prefHeight="698.0" prefWidth="700.0">
+               <children>
+                  <ImageView fitHeight="157.0" fitWidth="450.0" layoutX="125.0">
+                     <image>
+                        <Image url="@../image/c4y_logo.png" />
+                     </image>
+                  </ImageView>
+                  <FlowPane fx:id="flowPane" layoutX="41.0" layoutY="196.0" prefHeight="456.0" prefWidth="642.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="100.0" layoutY="731.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: fbfbfb; -fx-background-radius: 3;">
+               <effect>
+                  <DropShadow color="#00000067" />
+               </effect>
+               <children>
+                  <Button id="regReg" fx:id="sendBtn" layoutX="244.0" layoutY="12.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" text="Submit" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow color="#0000007e" />
+                     </effect>
+                     <styleClass>
+                        <String fx:value="button_style" />
+                        <String fx:value="button_style_blue" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
