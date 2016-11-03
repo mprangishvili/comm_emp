@@ -42,7 +42,7 @@ public class AppointmentController {
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
         connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
-        System.out.println("name " + LoginController._userName);
+//        System.out.println("name " + LoginController._userName);
         stmt = connect.prepareStatement("select * from massage_appointment where user_id=2");
         resultSet = stmt.executeQuery();
         String isPaid = null;
@@ -68,15 +68,13 @@ public class AppointmentController {
             vBox.setSpacing(10);
             hbox.setSpacing(500);
             TitledPane titledPane = new TitledPane(dateTime, hbox);
-            vBox.getChildren().add(new Label(LoginController._userName));
+//            vBox.getChildren().add(new Label(LoginController._userName));
             vBox.getChildren().addAll(new Label(resultSet.getString("time")));
-            vBox.getChildren().add(new Label("Your comment: "+ resultSet.getString("comment")));
+            vBox.getChildren().add(new Label("Your comment: " + resultSet.getString("comment")));
             Label paidLabel = new Label("");
-            if(resultSet.getBoolean("paid")){
-                 paidLabel.setText("Paid");
-            }
-            else
-            {
+            if (resultSet.getBoolean("paid")) {
+                paidLabel.setText("Paid");
+            } else {
                 paidLabel.setText("Not Paid");
             }
             hbox.getChildren().addAll(vBox, paidLabel);
