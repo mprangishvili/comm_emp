@@ -97,7 +97,7 @@ public class ForgotPasswordController {
     }
 
     static int count;
-    private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     //Generating verification code
     public String randomAlphaNumeric(int count) {
@@ -290,13 +290,13 @@ public class ForgotPasswordController {
             ResultSet rsSet2 = null;
             connect = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
             System.out.println("connection OK");
-            state = connect.prepareStatement("select validation('" + userEmail + "','" + newpass1.getText() + "')");
+            state = connect.prepareStatement("select * from validation('" + userEmail + "','" + newpass1.getText() + "')");
 
             if(newpass1.getText().equals(newpass2.getText())){
                 rsSet = state.executeQuery();
                 while(rsSet.next()){
-                    System.out.println(rsSet.getBoolean("validation"));
-                    if (rsSet.getBoolean("validation")) {
+                    System.out.println(rsSet.getBoolean("validation_result"));
+                    if (rsSet.getBoolean("validation_result")) {
                         System.out.println("password is in db");
                    labelWarning.setText("Do not use the previous password!");
                     }
