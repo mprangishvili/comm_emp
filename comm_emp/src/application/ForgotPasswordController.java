@@ -81,12 +81,12 @@ public class ForgotPasswordController {
 
     @FXML
     private void loadLogin(ActionEvent event) throws IOException, InterruptedException {
-        StageLoader sl = new StageLoader("Login.fxml", event);
+        new StageLoader("Login.fxml", event);
     }
 
     @FXML
     private void loadForgotPassword(ActionEvent event) throws IOException, InterruptedException {
-        StageLoader sl = new StageLoader("ForgotPassword.fxml", event);
+        new StageLoader("ForgotPassword.fxml", event);
     }
 
     //Calling Exit class, that Exits the applications
@@ -262,7 +262,7 @@ public class ForgotPasswordController {
             if (resetEmail.getText().equals(tempocode)) {
                 resetPasswordBtn.setVisible(true);
                 warningLabel.setVisible(false);
-                StageLoader sdddl = new StageLoader("NewPasswordPane.fxml", event);
+                new StageLoader("NewPasswordPane.fxml", event);
             } else {
                 ++count;
                 warningLabel.setVisible(true);

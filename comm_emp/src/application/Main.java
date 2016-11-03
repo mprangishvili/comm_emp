@@ -12,7 +12,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Font.loadFont(Main.class.getResource("/view/fonts/SourceSansPro-Black.ttf").toExternalForm(), 10);
-        new StageLoader("Login.fxml", primaryStage);
+//        new StageLoader("Login.fxml", primaryStage);
+        new StageLoader("MassageAppointment.fxml", primaryStage);
 
     }
 
