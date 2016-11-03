@@ -77,7 +77,7 @@ public class ForgotPasswordController {
     private Label succsessLabel;
 
     @FXML
-    private  Pane succsessPane;
+    private Pane succsessPane;
 
     @FXML
     private void loadLogin(ActionEvent event) throws IOException, InterruptedException {
@@ -257,23 +257,23 @@ public class ForgotPasswordController {
     @FXML
     private void newPasswordPrompt(ActionEvent event) throws IOException, InterruptedException, SQLException {
 
-            warningLabel.setText("");
+        warningLabel.setText("");
 
-            if (resetEmail.getText().equals(tempocode)) {
-                resetPasswordBtn.setVisible(true);
-                warningLabel.setVisible(false);
-                new StageLoader("NewPasswordPane.fxml", event);
-            } else {
-                ++count;
-                warningLabel.setVisible(true);
-                warningLabel.setText("The code is not correct!");
+        if (resetEmail.getText().equals(tempocode)) {
+            resetPasswordBtn.setVisible(true);
+            warningLabel.setVisible(false);
+            new StageLoader("NewPasswordPane.fxml", event);
+        } else {
+            ++count;
+            warningLabel.setVisible(true);
+            warningLabel.setText("The code is not correct!");
 //            if (count == 3) {
 //                System.out.println("Locked");
 //                Thread.sleep(5000);
 //            }
-            }
-            System.out.println("5 " + resetEmail.getText());
         }
+        System.out.println("5 " + resetEmail.getText());
+    }
 
 
     //method called on resetPasswordBtn, checks if the previous password was the same and sets a new one if not
@@ -292,17 +292,16 @@ public class ForgotPasswordController {
             System.out.println("connection OK");
             state = connect.prepareStatement("select * from validation('" + userEmail + "','" + newpass1.getText() + "')");
 
-            if(newpass1.getText().equals(newpass2.getText())){
+            if (newpass1.getText().equals(newpass2.getText())) {
                 rsSet = state.executeQuery();
-                while(rsSet.next()){
+                while (rsSet.next()) {
                     System.out.println(rsSet.getBoolean("validation_result"));
                     if (rsSet.getBoolean("validation_result")) {
                         System.out.println("password is in db");
-                   labelWarning.setText("Do not use the previous password!");
-                    }
-                    else{
+                        labelWarning.setText("Do not use the previous password!");
+                    } else {
                         boolean valid = PassValidator(newpass1.getText());
-                        if(valid){
+                        if (valid) {
                             labelWarning.setVisible(false);
                             state2 = connect.prepareStatement("select changepassword('" + userEmail + "','" + newpass1.getText() + "')");
                             System.out.println("for aleko " + userEmail + " password " + newpass1.getText());
@@ -312,15 +311,13 @@ public class ForgotPasswordController {
                             succsessGif.setVisible(true);
 
                             succsessLabel.setText("Your password was succesfully changed!");
-                        }
-                        else {
+                        } else {
                             labelWarning.setVisible(true);
                             labelWarning.setText("The password should have at least one capital letter, one number and one symbol!");
                         }
                     }
                 }
-            }
-            else{
+            } else {
                 System.out.println("do not match");
                 labelWarning.setText("The passwords do not match!");
 

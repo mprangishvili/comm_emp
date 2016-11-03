@@ -32,11 +32,7 @@ public class test extends Application {
 
     @Override
     public void start(Stage primaryStage) throws SQLException, IOException {
-        BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/view/Massage.fxml"));
-        Scene scene = new Scene(root, width, height);
-        scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        new StageLoader("Massage.fxml", primaryStage);
     }
 
     public static void main(String[] args) {
