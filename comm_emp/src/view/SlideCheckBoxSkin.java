@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package application;
+package view;
 
 import com.sun.javafx.scene.control.skin.LabeledSkinBase;
 import javafx.animation.Interpolator;

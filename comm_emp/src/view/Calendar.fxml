@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CalendarController">
+    <center>
+        <Pane fx:id="calendarPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="644.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
+         <children>
+            <TreeTableView editable="true" prefHeight="592.0" prefWidth="1400.0">
+              <columns>
+                <TreeTableColumn prefWidth="200.0" text="Sun" />
+                <TreeTableColumn prefWidth="200.0" text="Mon" />
+                  <TreeTableColumn prefWidth="200.0" text="Tue" />
+                  <TreeTableColumn prefWidth="200.0" text="Wed" />
+                  <TreeTableColumn minWidth="200.0" prefWidth="200.0" text="Thu" />
+                  <TreeTableColumn minWidth="200.0" prefWidth="200.0" text="Fri" />
+                  <TreeTableColumn minWidth="200.0" prefWidth="200.0" text="Sat" />
+              </columns>
+            </TreeTableView>
+         </children></Pane>
+    </center>
+</BorderPane>

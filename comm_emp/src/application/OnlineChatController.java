@@ -24,7 +24,7 @@ public class OnlineChatController {
 
     @FXML
     private void initialize() {
-        Exit exit = new Exit(onlineChatPane);
+//        Exit exit = new Exit(onlineChatPane);
     }
 
     @FXML
