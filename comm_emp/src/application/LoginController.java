@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import model.ConnectionClass;
 import view.SlideCheckBox;
 
 public class LoginController {
@@ -69,12 +70,10 @@ public class LoginController {
         String user = emailfield.getText();
         String pass = passwordfield.getText();
 
-        Connection connection = null;
         try {
             PreparedStatement stmt = null;
             ResultSet rs = null;
-            connection = DriverManager.getConnection("jdbc:postgresql://10.3.12.28:5432/postgres", "postgres", "18052010M+m");
-            stmt = connection.prepareStatement("select * from validation('" + emailfield.getText() + "','" + passwordfield.getText() + "')");
+            stmt = ConnectionClass.getConnection().prepareStatement("select * from validation('" + emailfield.getText() + "','" + passwordfield.getText() + "')");
             rs = stmt.executeQuery();
 
             if (rs.next()) {

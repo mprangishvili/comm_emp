@@ -15,11 +15,96 @@
         <Pane id="mainPane" fx:id="massagePane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" styleClass="main_pane" BorderPane.alignment="CENTER">
          <children>
             <Pane fx:id="datePickerSkinPane" layoutX="300.0" layoutY="10.0" prefHeight="700.0" prefWidth="1610.0" />
-            <Pane fx:id="datePickerBackgroundPanePane" layoutX="300.0" layoutY="10.0" prefHeight="700.0" prefWidth="1610.0" styleClass="backgroundPane" visible="false" />
-            <Pane fx:id="datePickerInnerPane" layoutX="670.0" layoutY="200.0" prefHeight="400.0" prefWidth="805.0" style="-fx-background-color: white;" visible="false">
+            <Pane fx:id="datePickerBackgroundPanePane" layoutX="300.0" layoutY="10.0" prefHeight="700.0" prefWidth="1610.0" style="-fx-cursor: hand;" styleClass="backgroundPane" visible="false" />
+            <Pane fx:id="datePickerInnerPane" layoutX="905.0" layoutY="160.0" prefHeight="475.0" prefWidth="400.0" style="-fx-background-color: white;">
                <children>
-                  <Button fx:id="exitButton" layoutX="792.0" layoutY="-12.0" mnemonicParsing="false" onAction="#performExit" style="-fx-background-radius: 100;" text="X" />
+                  <Pane prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #e4eaf1;">
+                     <children>
+                        <Button fx:id="exitButton" alignment="CENTER" layoutX="334.0" layoutY="18.0" mnemonicParsing="false" onAction="#performExit" style="-fx-cursor: hand; -fx-background-color: #e4eaf1;" text="X" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="25.0" layoutY="21.0" text="Appointment" textFill="#000000c5">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="137.0" prefHeight="270.0" prefWidth="400.0" visible="false">
+                     <children>
+                        <Pane layoutX="35.5" layoutY="24.0">
+                           <children>
+                              <Label layoutX="32.5" layoutY="57.0" text="Time">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="93.5" prefHeight="39.0" prefWidth="235.0" />
+                              <TextArea layoutX="93.5" layoutY="145.0" prefHeight="55.0" prefWidth="235.0" />
+                              <Label layoutX="24.5" layoutY="160.0" text="Notes">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="93.5" layoutY="48.0" prefHeight="39.0" prefWidth="235.0" />
+                              <ComboBox layoutX="93.5" layoutY="96.0" prefHeight="39.0" prefWidth="235.0" />
+                              <Label layoutX="3.5" layoutY="9.0" text="Provider">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutY="105.0" text="Duration">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Line endX="400.0" layoutY="240.0" startX="50.0">
+                           <effect>
+                              <DropShadow color="#000000aa" />
+                           </effect>
+                        </Line>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="80.0" prefHeight="57.0" prefWidth="400.0" style="-fx-background-color: #f1f5f8;">
+                     <children>
+                        <ToggleButton fx:id="plannerToggle" layoutX="25.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="103.0" style="-fx-background-color: white; -fx-border-width: 3 0 0 0; -fx-border-color: black black black black; -fx-cursor: hand;" styleClass="toggleBtnActive" text="Planner">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="AppointmentMenu" />
+                           </toggleGroup>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="massageToggle" layoutX="128.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="103.0" style="-fx-background-color: f1f5f8; -fx-cursor: hand;" styleClass="toggleBtn" text="Massage" toggleGroup="$AppointmentMenu">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </ToggleButton>
+                        <ToggleButton fx:id="menuToggle" layoutX="231.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="103.0" style="-fx-background-color: f1f5f8; -fx-cursor: hand;" styleClass="toggleBtn" text="Menu" toggleGroup="$AppointmentMenu">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </ToggleButton>
+                     </children>
+                  </Pane>
+                  <Button layoutX="247.0" layoutY="407.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" text="Finish">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="49.0" layoutY="407.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" text="Cancel">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
                </children>
+               <effect>
+                  <DropShadow color="#000000ad" />
+               </effect>
             </Pane>
          </children>
         </Pane>

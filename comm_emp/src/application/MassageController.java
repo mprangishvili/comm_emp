@@ -8,10 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
 
+import java.io.File;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,7 +42,8 @@ public class MassageController {
     List<String> recordedTimes = new ArrayList<String>();
     HashMap<String, List<String>> myMap = new HashMap<String, List<String>>();
     Boolean clicked = false;
-    Button tempAddButton = new Button();
+    ImageView tempAddButton = new ImageView();
+    Image image = new Image("image/add_green_button.png");
 
     public void initialize() throws SQLException {
         datePickerBackgroundPanePane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -69,6 +73,7 @@ public class MassageController {
 
         DatePicker date_picker = new DatePicker();
         date_picker.setShowWeekNumbers(false);
+
         date_picker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(DatePicker param) {
@@ -84,21 +89,30 @@ public class MassageController {
                             FlowPane fPane = new FlowPane();
 
                             Label lbl = new Label(getText());
+                            lbl.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    System.out.println("asdasd");
+                                }
+                            });
                             FlowPane subFPane = new FlowPane();
                             subFPane.setPrefWidth(180);
                             lbl.setPrefWidth(190);
                             fPane.getChildren().add(lbl);
                             ArrayList<String> tempTimes = (ArrayList<String>) myMap.get(item.toString());
-                            Button button = new Button("+");
-                            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                            ImageView add_button = new ImageView();
+                            add_button.setImage(image);
+                            add_button.setStyle("-fx-cursor: hand !important;");
+                            add_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                                 @Override
                                 public void handle(MouseEvent event) {
                                     datePickerBackgroundPanePane.setVisible(true);
                                     datePickerInnerPane.setVisible(true);
                                 }
                             });
-                            button.setVisible(false);
-                            fPane.getChildren().add(button);
+                            add_button.setVisible(false);
+                            fPane.getChildren().add(add_button);
                             fPane.getChildren().add(subFPane);
                             if (tempTimes != null) {
                                 for (String tempTimesItem : tempTimes) {
@@ -108,20 +122,20 @@ public class MassageController {
                                 @Override
                                 public void handle(MouseEvent event) {
                                     clicked = true;
-                                    button.setVisible(true);
-                                    tempAddButton = button;
+                                    add_button.setVisible(true);
+                                    tempAddButton = add_button;
                                 }
                             });
                             setOnMouseEntered(new EventHandler<MouseEvent>() {
                                 @Override
                                 public void handle(MouseEvent event) {
-                                    button.setVisible(true);
+                                    add_button.setVisible(true);
                                 }
                             });
                             setOnMouseExited(new EventHandler<MouseEvent>() {
                                 @Override
                                 public void handle(MouseEvent event) {
-                                    button.setVisible(false);
+                                    add_button.setVisible(false);
                                     if (clicked) {
                                         tempAddButton.setVisible(true);
                                     }
@@ -133,8 +147,6 @@ public class MassageController {
                             setGraphic(fPane);
                             setPrefWidth(230);
                             setPrefHeight(100);
-                            setStyle("-fx-cursor: hand !important;");
-//                            setTextAlignment(TextAlignment.LEFT);
                         }
                     }
 
